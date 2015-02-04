@@ -1,3 +1,4 @@
 #coding=utf-8
-import translate
-translate.remove_useless("amō")
+from translate import Translator
+translator = Translator()
+print translator.request_translation("amō")

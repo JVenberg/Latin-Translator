@@ -2,8 +2,8 @@
 from lxml import html
 import requests
 import re
-class Translate(object):
-	"""docstring for Translate"""
+class Translator(object):
+	"""docstring for Translator"""
 	def __init__(self):
 		pass
 	def remove_useless(self, input):
@@ -19,4 +19,13 @@ class Translate(object):
 		self.input = self.input.replace("“", "")
 		self.input = self.input.replace("”", "")
 		return self.input
-
+	def request_translation(self, input):
+		self.input = self.remove_useless(input)
+		words = input.split()
+		page = requests.get('http://www.archives.nd.edu/cgi-bin/wordz.pl?keyword='+ "+".join(words))
+		tree = html.fromstring(page.text)
+		translation = tree.xpath('//pre/text()')
+		translations = translation[0].split('\n\n')
+		#m = re.search('(?<=(\]  \n))(.*?)$', translations[0])
+		#print m.group(0)
+		return translations
