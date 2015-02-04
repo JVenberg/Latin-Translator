@@ -1,3 +1,3 @@
-from lxml import html
-import requests
-import re
+#coding=utf-8
+import translate
+translate.remove_useless("amō")
