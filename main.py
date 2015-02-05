@@ -1,4 +1,4 @@
 #coding=utf-8
 from translate import Translator
 translator = Translator()
-print translator.request_translation("amō")
+translator.print_translation("amō amare")

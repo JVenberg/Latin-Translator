@@ -19,6 +19,7 @@ class Translator(object):
 		self.input = self.input.replace("“", "")
 		self.input = self.input.replace("”", "")
 		return self.input
+		
 	def request_translation(self, input):
 		self.input = self.remove_useless(input)
 		words = input.split()
@@ -29,3 +30,8 @@ class Translator(object):
 		#m = re.search('(?<=(\]  \n))(.*?)$', translations[0])
 		#print m.group(0)
 		return translations
+
+	def print_translation(self, input):
+		self.translations = self.request_translation(input)
+		for word in self.translations:
+			print word + "\n\n"
